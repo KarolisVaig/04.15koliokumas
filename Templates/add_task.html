@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>Add Task</h1>
+  <form method="POST" action="/add_task">
+    <input type="text" name="title" placeholder="Task Title" required>
+    <input type="text" name="description" placeholder="Task Description" required>
+    <select name="status">
+      <option value="Not Completed">Not Completed</option>
+      <option value="Completed">Completed</option>
+      <option value="Deferred">Deferred</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
+  <a href="/tasks">View Tasks</a>
+{% endblock %}

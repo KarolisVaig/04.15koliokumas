@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>{{ user }}'s Tasks</h1>
+  <ul>
+    {% for task in tasks %}
+      <li>
+        <strong>{{ task.title }}</strong> - {{ task.description }} - <em>{{ task.status }}</em>
+        <form method="POST" action="/update_status/{{ loop.index0 }}">
+          <select name="status">
+            <option value="Not Completed">Not Completed</option>
+            <option value="Completed">Completed</option>
+            <option value="Deferred">Deferred</option>
+          </select>
+          <button type="submit">Update Status</button>
+        </form>
+        <form method="POST" action="/delete/{{ loop.index0 }}">
+          <button type="submit">Delete</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="/">Change User</a>
+{% endblock %}
